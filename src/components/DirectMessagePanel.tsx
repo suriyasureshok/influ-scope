@@ -35,7 +35,6 @@ export function DirectMessagePanel({ influencerUsername }: DirectMessagePanelPro
 
     setMessages(prev => [...prev, newMessage]);
     setMessage('');
-    setIsTyping(true);
 
     // Simulate message sending
     toast({
@@ -58,7 +57,7 @@ export function DirectMessagePanel({ influencerUsername }: DirectMessagePanelPro
       setMessages(prev => 
         prev.map(msg => 
           msg.id === newMessage.id 
-            ? { ...msg, status: 'read' } 
+            ? { ...msg, status: 'delivered' } 
             : msg
         )
       );
