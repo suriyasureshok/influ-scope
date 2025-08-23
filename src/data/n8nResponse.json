@@ -1,0 +1,57 @@
+[
+  {
+    "dashboardData": [
+      {
+        "overview": {
+          "fullName": "Jane Doe",
+          "username": "janedoe_travels",
+          "platform": "Instagram",
+          "followers": 150000,
+          "bio": "Adventure seeker | Foodie | Sustainable living | Exploring the world one step at a time."
+        },
+        "recommendation": "Strong Fit",
+        "avgLikes": 8500,
+        "avgComments": 320,
+        "engagementRate": 5.8,
+        "avgVideoViews": 125000,
+        "audienceDemographics": {
+          "age": {"18-24": 30, "25-34": 45, "35-44": 15, "45+": 10},
+          "gender": {"female": 60, "male": 40},
+          "location": {"USA": 40, "Canada": 15, "UK": 10, "Australia": 5, "Other": 30}
+        },
+        "posts": [
+          {
+            "id": "post1",
+            "date": "2024-03-20",
+            "type": "Reel",
+            "caption": "Hidden gems of Kyoto! 🌸 #Kyoto #JapanTravel #TravelVlog",
+            "likes": 12500,
+            "comments": 350,
+            "views": 180000,
+            "hashtags": ["#Kyoto", "#JapanTravel", "#TravelVlog"]
+          },
+          {
+            "id": "post2",
+            "date": "2024-03-18",
+            "type": "Photo",
+            "caption": "Morning coffee in Paris ☕ #ParisLife #Coffee #Travel",
+            "likes": 8200,
+            "comments": 290,
+            "views": null,
+            "hashtags": ["#ParisLife", "#Coffee", "#Travel"]
+          },
+          {
+            "id": "post3",
+            "date": "2024-03-15",
+            "type": "Reel",
+            "caption": "Sustainable travel tips 🌱 #SustainableTravel #EcoFriendly #Tips",
+            "likes": 9800,
+            "comments": 420,
+            "views": 145000,
+            "hashtags": ["#SustainableTravel", "#EcoFriendly", "#Tips"]
+          }
+        ]
+      }
+    ]
+  }
+]
