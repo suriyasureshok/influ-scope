@@ -8,10 +8,10 @@ import { RawJsonViewer } from './RawJsonViewer';
 import { Loader2, TrendingUp } from 'lucide-react';
 
 interface InfluencerData {
-  username: string;
-  platform: string;
-  followers: number;
-  bio: string;
+  username?: string;
+  platform?: string;
+  followers?: number;
+  bio?: string;
   recommendation?: string;
   avgLikes?: number;
   avgComments?: number;
@@ -117,17 +117,17 @@ export function InfluencerDashboard() {
             <div className="metric-card">
               <div className="flex items-start gap-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-2xl font-bold text-white">
-                  {influencerData.username.charAt(0).toUpperCase()}
+                  {influencerData.username?.charAt(0)?.toUpperCase() || 'U'}
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-2xl font-bold mb-2">@{influencerData.username}</h2>
-                  <p className="text-muted-foreground mb-2">{influencerData.bio}</p>
+                  <h2 className="text-2xl font-bold mb-2">@{influencerData.username || 'unknown'}</h2>
+                  <p className="text-muted-foreground mb-2">{influencerData.bio || 'No bio available'}</p>
                   <div className="flex items-center gap-4 text-sm">
                     <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">
-                      {influencerData.platform}
+                      {influencerData.platform || 'Unknown Platform'}
                     </span>
                     <span className="text-muted-foreground">
-                      {influencerData.followers.toLocaleString()} followers
+                      {influencerData.followers?.toLocaleString() || '0'} followers
                     </span>
                   </div>
                 </div>
@@ -146,7 +146,7 @@ export function InfluencerDashboard() {
                 <PostsTable posts={influencerData.posts} />
               </div>
               <div>
-                <DirectMessagePanel influencerUsername={influencerData.username} />
+                <DirectMessagePanel influencerUsername={influencerData.username || 'unknown'} />
               </div>
             </div>
 
