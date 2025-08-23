@@ -18,13 +18,13 @@ interface Post {
 }
 
 interface PostsTableProps {
-  posts: Post[];
+  posts?: Post[];
 }
 
 type SortField = 'date' | 'likes' | 'comments' | 'views';
 type SortDirection = 'asc' | 'desc';
 
-export function PostsTable({ posts }: PostsTableProps) {
+export function PostsTable({ posts = [] }: PostsTableProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortField, setSortField] = useState<SortField>('date');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');

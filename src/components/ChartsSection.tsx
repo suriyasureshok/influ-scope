@@ -5,7 +5,7 @@ import { TrendingUp, BarChart3, Hash } from 'lucide-react';
 
 interface ChartsSectionProps {
   data: {
-    posts: Array<{
+    posts?: Array<{
       id: string;
       date: string;
       type: string;
@@ -18,8 +18,11 @@ interface ChartsSectionProps {
 }
 
 export function ChartsSection({ data }: ChartsSectionProps) {
+  // Ensure posts array exists and provide fallback
+  const posts = data.posts || [];
+  
   // Process data for engagement over time
-  const engagementData = data.posts
+  const engagementData = posts
     .map(post => ({
       date: new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
       engagement: post.likes + post.comments,
@@ -29,7 +32,7 @@ export function ChartsSection({ data }: ChartsSectionProps) {
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   // Process data for video views by post type
-  const postTypeData = data.posts
+  const postTypeData = posts
     .reduce((acc, post) => {
       const existing = acc.find(item => item.type === post.type);
       if (existing) {
@@ -50,7 +53,7 @@ export function ChartsSection({ data }: ChartsSectionProps) {
     }));
 
   // Process hashtag frequency
-  const hashtagData = data.posts
+  const hashtagData = posts
     .flatMap(post => post.hashtags)
     .reduce((acc, hashtag) => {
       const tag = hashtag.replace('#', '');

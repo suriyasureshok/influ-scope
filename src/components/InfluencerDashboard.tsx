@@ -143,7 +143,7 @@ export function InfluencerDashboard() {
             {/* Posts Table and DM Panel */}
             <div className="grid lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
-                <PostsTable posts={influencerData.posts} />
+                <PostsTable posts={influencerData.posts || []} />
               </div>
               <div>
                 <DirectMessagePanel influencerUsername={influencerData.username || 'unknown'} />

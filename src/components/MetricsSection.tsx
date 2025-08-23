@@ -10,7 +10,7 @@ interface MetricsSectionProps {
     avgComments?: number;
     engagementRate?: number;
     avgVideoViews?: number;
-    posts: Array<{
+    posts?: Array<{
       likes: number;
       comments: number;
       views: number | null;
@@ -19,12 +19,18 @@ interface MetricsSectionProps {
 }
 
 export function MetricsSection({ data }: MetricsSectionProps) {
+  // Ensure posts array exists and provide fallback
+  const posts = data.posts || [];
+  
   // Calculate metrics from posts if not provided
-  const totalPosts = data.posts.length;
-  const avgLikes = data.avgLikes || (totalPosts > 0 ? Math.round(data.posts.reduce((sum, post) => sum + post.likes, 0) / totalPosts) : 0);
-  const avgComments = data.avgComments || (totalPosts > 0 ? Math.round(data.posts.reduce((sum, post) => sum + post.comments, 0) / totalPosts) : 0);
-  const avgVideoViews = data.avgVideoViews || (totalPosts > 0 ? 
-    Math.round(data.posts.filter(p => p.views).reduce((sum, post) => sum + (post.views || 0), 0) / data.posts.filter(p => p.views).length) || 0 : 0);
+  const totalPosts = posts.length;
+  const avgLikes = data.avgLikes || (totalPosts > 0 ? Math.round(posts.reduce((sum, post) => sum + post.likes, 0) / totalPosts) : 0);
+  const avgComments = data.avgComments || (totalPosts > 0 ? Math.round(posts.reduce((sum, post) => sum + post.comments, 0) / totalPosts) : 0);
+  
+  // Calculate average video views with null safety
+  const postsWithViews = posts.filter(p => p.views);
+  const avgVideoViews = data.avgVideoViews || (postsWithViews.length > 0 ? 
+    Math.round(postsWithViews.reduce((sum, post) => sum + (post.views || 0), 0) / postsWithViews.length) : 0);
   
   // Calculate engagement rate if not provided
   const engagementRate = data.engagementRate || (avgLikes + avgComments > 0 ? 
